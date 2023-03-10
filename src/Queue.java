@@ -1,6 +1,7 @@
 public class Queue {
     Node head;
     Node tail;
+    int len = 0;
 
     public boolean isNotEmpty() {
         return head != null; // no need to check for tail
@@ -11,12 +12,14 @@ public class Queue {
         if (head == null) head = newNode;
         else tail.next = newNode;
         tail = newNode;
+        len++;
     }
 
     public int deQueue() throws Exception {
         if (isNotEmpty()) {
             int d = head.data;
             head = head.next;
+            len--;
             return d;
         } else {
             throw new Exception("Queue is empty.");
